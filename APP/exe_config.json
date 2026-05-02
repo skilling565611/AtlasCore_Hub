@@ -1,0 +1,21 @@
+{
+  "exe": {
+    "build_enabled": false,
+    "output_name": "AtlasCoreHub.exe",
+    "build_tool": "pyinstaller",
+    "build_flags": "--onefile --windowed"
+  },
+  "update_requirements": {
+    "current": [
+      "No EXE build is enabled or executed",
+      "JSON is read by launch_hub_source.bat using built-in PowerShell"
+    ],
+    "future_potential": [
+      "PyInstaller",
+      "cx_Freeze",
+      "Nuitka",
+      "Visual C++ Redistributable (depending on packaging output)"
+    ],
+    "approval_policy": "Do not build, run, or test EXE packaging until explicit user approval"
+  }
+}

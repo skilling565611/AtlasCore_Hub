@@ -15,7 +15,8 @@
 - `.github/agents/atlascore-dev.agent.md` — AtlasCore Dev custom agent
 - `APP/main.py` — App entry point
 - `APP/hub.py` — Main hub GUI (tkinter, 4-panel layout)
-- `APP/launch_hub_source.bat` — Launch menu for Python source only, with packaging placeholder disabled
+- `APP/launch_hub_source.bat` — Launch menu for Python source only; reads future EXE settings from JSON with packaging disabled
+- `APP/exe_config.json` — Future EXE configuration settings (prepared, disabled)
 - `LOGS/CHANGELOG.md` — this file
 
 ### Notes
