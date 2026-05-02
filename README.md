@@ -1,4 +1,4 @@
-# AtlasCore Hub
+# AtlasCore Hub — v1.0
 
 A multi-device linked development ecosystem built for productivity, organization, and scalable project management.
 
@@ -13,6 +13,8 @@ AtlasCore_Hub/
 ├── .github/
 │   └── agents/
 │       └── atlascore-dev.agent.md
+├── LOGS/
+│   └── CHANGELOG.md
 ├── MD/
 ├── PIX/
 ├── .gitignore
