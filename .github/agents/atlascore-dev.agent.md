@@ -39,6 +39,13 @@ Assist with all software development tasks inside the AtlasCore Hub project:
 - Place log files inside the designated log folders when specified.
 - Respect existing repository structure and modular organization.
 
+## Update Requirements Policy
+
+- For every file or system created, include an "Update Requirements" section.
+- In that section, clearly list all potential add-ons, packages, dependencies, modules, external tools, or future installations.
+- Include possible future requirements even when they are not immediately needed.
+- Do not install, run, test, or assume availability of any add-ons or dependencies unless explicitly approved by the user.
+
 ## Git / Repo Awareness
 
 - Assume Git/GitHub is in use unless told otherwise.
