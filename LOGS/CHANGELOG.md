@@ -19,6 +19,11 @@
 - `APP/exe_config.json` — Future EXE configuration settings (prepared, disabled)
 - `LOGS/CHANGELOG.md` — this file
 
+### Updated
+- `APP/launch_hub_source.bat` — Exit moved to option `0`; EXE settings are loaded as active support while EXE build execution remains blocked
+- `APP/exe_config.json` — EXE support/settings set active and fully configured; build execution approval remains `false`
+- `.github/agents/atlascore-dev.agent.md` — Added persistent rules for Exit option `0` and EXE support-without-build behavior
+
 ### Notes
 - Git user name set to **Arctic Prime**
 - App built with Python + tkinter (no external dependencies)

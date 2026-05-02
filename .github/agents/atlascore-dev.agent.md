@@ -38,6 +38,8 @@ Assist with all software development tasks inside the AtlasCore Hub project:
 - Generate README.md files when requested.
 - Place log files inside the designated log folders when specified.
 - Respect existing repository structure and modular organization.
+- In any menus, launchers, selectors, or interface option lists, reserve option `0` for Exit unless explicitly instructed otherwise.
+- Keep EXE packaging support configured and readable when requested, but do not build/run/test EXE outputs until explicitly approved.
 
 ## Update Requirements Policy
 

@@ -1,13 +1,16 @@
 {
   "exe": {
-    "build_enabled": false,
+    "support_enabled": true,
+    "settings_active": true,
+    "build_execution_approved": false,
     "output_name": "AtlasCoreHub.exe",
     "build_tool": "pyinstaller",
     "build_flags": "--onefile --windowed"
   },
   "update_requirements": {
     "current": [
-      "No EXE build is enabled or executed",
+      "EXE packaging support is enabled and settings stay active in JSON",
+      "EXE build execution approval remains false until user approval",
       "JSON is read by launch_hub_source.bat using built-in PowerShell"
     ],
     "future_potential": [
