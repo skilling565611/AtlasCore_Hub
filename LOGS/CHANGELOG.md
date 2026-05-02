@@ -20,9 +20,9 @@
 - `LOGS/CHANGELOG.md` — this file
 
 ### Updated
-- `APP/launch_hub_source.bat` — Exit moved to option `0`; EXE settings are loaded as active support while EXE build execution remains blocked
-- `APP/exe_config.json` — EXE support/settings set active and fully configured; build execution approval remains `false`
-- `.github/agents/atlascore-dev.agent.md` — Added persistent rules for Exit option `0` and EXE support-without-build behavior
+- `APP/launch_hub_source.bat` — Exit moved to option `0`; EXE settings are loaded as active support and build policy now states explicit-request-only (no auto-build)
+- `APP/exe_config.json` — EXE support/settings remain active and fully configured; explicit-request build policy added
+- `.github/agents/atlascore-dev.agent.md` — Added persistent rules for Exit option `0`, always-on EXE support, and explicit-request-only EXE builds
 
 ### Notes
 - Git user name set to **Arctic Prime**

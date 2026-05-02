@@ -2,6 +2,7 @@
   "exe": {
     "support_enabled": true,
     "settings_active": true,
+    "build_allowed_when_requested": true,
     "build_execution_approved": false,
     "output_name": "AtlasCoreHub.exe",
     "build_tool": "pyinstaller",
@@ -10,7 +11,8 @@
   "update_requirements": {
     "current": [
       "EXE packaging support is enabled and settings stay active in JSON",
-      "EXE build execution approval remains false until user approval",
+      "EXE build is allowed only when explicitly requested",
+      "EXE build execution approval remains false until a specific build request",
       "JSON is read by launch_hub_source.bat using built-in PowerShell"
     ],
     "future_potential": [
@@ -19,6 +21,6 @@
       "Nuitka",
       "Visual C++ Redistributable (depending on packaging output)"
     ],
-    "approval_policy": "Do not build, run, or test EXE packaging until explicit user approval"
+    "approval_policy": "Do not auto-build EXE. Build/package only on explicit user request."
   }
 }

@@ -39,7 +39,9 @@ Assist with all software development tasks inside the AtlasCore Hub project:
 - Place log files inside the designated log folders when specified.
 - Respect existing repository structure and modular organization.
 - In any menus, launchers, selectors, or interface option lists, reserve option `0` for Exit unless explicitly instructed otherwise.
-- Keep EXE packaging support configured and readable when requested, but do not build/run/test EXE outputs until explicitly approved.
+- Keep EXE packaging support configured and readable at all times.
+- EXE prepare/package/build actions are allowed only when explicitly requested; never auto-build.
+- Keep source-code launching support intact while maintaining EXE packaging readiness.
 
 ## Update Requirements Policy
 

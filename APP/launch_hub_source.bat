@@ -3,9 +3,9 @@ setlocal
 
 REM ======================================================
 REM Configuration Area (Version 1.0)
-REM Source launch is enabled. EXE packaging support is
-REM configured and active, but build execution is blocked
-REM until explicit approval.
+REM Source launch is enabled. EXE packaging support stays
+REM configured and active. EXE build runs only when there
+REM is an explicit request/approval.
 REM ======================================================
 
 set "APP_ROOT=%~dp0"
@@ -29,7 +29,7 @@ echo         AtlasCore Hub - Source Launcher
 echo ===============================================
 echo.
 echo 1. Launch AtlasCore Hub (Python source)
-echo 2. Packaging Settings Status (EXE build blocked)
+echo 2. Packaging Settings Status (EXE build on explicit request)
 echo 0. Exit
 echo.
 set /p choice=Select an option [0-2]: 
@@ -46,6 +46,7 @@ goto menu
 :load_exe_config
 set "EXE_SUPPORT_ENABLED=1"
 set "EXE_SETTINGS_ACTIVE=1"
+set "EXE_BUILD_ALLOWED_WHEN_REQUESTED=1"
 set "EXE_BUILD_EXECUTION_APPROVED=0"
 set "EXE_OUTPUT_NAME=AtlasCoreHub.exe"
 set "EXE_BUILD_TOOL=pyinstaller"
@@ -53,7 +54,7 @@ set "EXE_BUILD_FLAGS=--onefile --windowed"
 
 if not exist "%EXE_CONFIG_FILE%" goto :eof
 
-for /f "usebackq tokens=1* delims==" %%A in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$cfg = Get-Content -Raw '%EXE_CONFIG_FILE%' | ConvertFrom-Json; $support = if ($cfg.exe.support_enabled) { '1' } else { '0' }; $active = if ($cfg.exe.settings_active) { '1' } else { '0' }; $approved = if ($cfg.exe.build_execution_approved) { '1' } else { '0' }; @('EXE_SUPPORT_ENABLED=' + $support,'EXE_SETTINGS_ACTIVE=' + $active,'EXE_BUILD_EXECUTION_APPROVED=' + $approved,'EXE_OUTPUT_NAME=' + $cfg.exe.output_name,'EXE_BUILD_TOOL=' + $cfg.exe.build_tool,'EXE_BUILD_FLAGS=' + $cfg.exe.build_flags)"`) do (
+for /f "usebackq tokens=1* delims==" %%A in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$cfg = Get-Content -Raw '%EXE_CONFIG_FILE%' | ConvertFrom-Json; $support = if ($cfg.exe.support_enabled) { '1' } else { '0' }; $active = if ($cfg.exe.settings_active) { '1' } else { '0' }; $allowed = if ($cfg.exe.build_allowed_when_requested) { '1' } else { '0' }; $approved = if ($cfg.exe.build_execution_approved) { '1' } else { '0' }; @('EXE_SUPPORT_ENABLED=' + $support,'EXE_SETTINGS_ACTIVE=' + $active,'EXE_BUILD_ALLOWED_WHEN_REQUESTED=' + $allowed,'EXE_BUILD_EXECUTION_APPROVED=' + $approved,'EXE_OUTPUT_NAME=' + $cfg.exe.output_name,'EXE_BUILD_TOOL=' + $cfg.exe.build_tool,'EXE_BUILD_FLAGS=' + $cfg.exe.build_flags)"`) do (
     set "%%A=%%B"
 )
 goto :eof
@@ -82,13 +83,14 @@ echo EXE packaging support is configured and ready.
 echo.
 echo - Support enabled: %EXE_SUPPORT_ENABLED%
 echo - Settings active: %EXE_SETTINGS_ACTIVE%
-echo - Build execution approved: %EXE_BUILD_EXECUTION_APPROVED%
+echo - Build allowed when requested: %EXE_BUILD_ALLOWED_WHEN_REQUESTED%
+echo - Build execution approved now: %EXE_BUILD_EXECUTION_APPROVED%
 echo - Output name: %EXE_OUTPUT_NAME%
 echo - Build tool: %EXE_BUILD_TOOL%
 echo - Build flags: %EXE_BUILD_FLAGS%
 echo.
-echo EXE build remains blocked until explicit approval.
-echo This launcher does not create, build, run, or test any EXE.
+echo EXE build is permitted only on explicit request.
+echo This launcher does not auto-create, auto-build, run, or test any EXE.
 echo.
 pause
 goto menu
@@ -106,7 +108,8 @@ REM - Current required config file:
 REM   - APP\exe_config.json (read for future EXE settings)
 REM - Current configurable EXE values (loaded from JSON):
 REM   - EXE_SUPPORT_ENABLED, EXE_SETTINGS_ACTIVE
-REM   - EXE_BUILD_EXECUTION_APPROVED (must remain 0 until approval)
+REM   - EXE_BUILD_ALLOWED_WHEN_REQUESTED (policy toggle)
+REM   - EXE_BUILD_EXECUTION_APPROVED (set only when explicit build is requested)
 REM   - EXE_OUTPUT_NAME, EXE_BUILD_TOOL, EXE_BUILD_FLAGS
 REM - Potential future packaging add-ons (NOT approved/installed):
 REM   - PyInstaller (pip package) for .exe bundling
